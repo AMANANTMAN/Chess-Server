@@ -2,17 +2,22 @@
 const express = require('express'), server = express();
 const host = '0.0.0.0';
 const port = process.env.PORT || 3000;
+let index;
+
+function dirname(fileName) {
+  return __dirname + "/" + fileName
+}
 
 //Basic routes
 server.get('/',(requests,response)=>{
-  response.sendFile('/index.html')
+  response.sendFile(dirname("index.html"))
 });
 server.get('/summer', (request,response)=>{
-   response.sendFile('/summer.html');
+   response.sendFile(dirname("summer.html"));
 });
 
 server.get('/winter',(request,response)=>{
-   response.sendFile('/winter.html');
+   response.sendFile(dirname("winter.html"));
 });
 
 //Express error handling middleware
