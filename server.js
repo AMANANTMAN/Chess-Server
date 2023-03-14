@@ -24,6 +24,6 @@ server.use((request,response)=>{
 });
 
 //Binding to a port
-server.listen(80, ()=>{
+server.listen(5001, ()=>{
   console.log('Express server started at port 5001');
 });
