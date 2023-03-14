@@ -1,28 +1,41 @@
 //server.js
-const express = require('express'), server = express();
+const express = require('express'), app = express();
 const host = '0.0.0.0';
 const port = process.env.PORT || 3000;
 
+var options = {
+  root: path.join(__dirname)
+};
+function sendFile(fileName) {
+  res.sendFile(fileName, options, function (err) {
+    if (err) {
+      next(err);
+    } else {
+      console.log('Sent:', fileName);
+    }
+  });
+}
+
 //Basic routes
-server.get('/',(requests,response)=>{
-  response.sendFile('./index.html')
+app.get('/', function(req, res){
+    sendFile("index.html")
 });
-server.get('/summer', (request,response)=>{
-   response.sendFile('./summer.html');
+app.get('/summer', (req,res)=>{
+   res.sendFile('/summer.html');
 });
 
-server.get('/winter',(request,response)=>{
-   response.sendFile('./winter.html');
+app.get('/winter',(req,res)=>{
+   res.sendFile('/winter.html');
 });
 
 //Express error handling middleware
-server.use((request,response)=>{
-   response.type('text/plain');
-   response.status(505);
-   response.send('Error page');
+app.use((req,res)=>{
+   res.type('text/plain');
+   res.status(505);
+   res.send('Error page');
 });
 
 //Binding to a port
-server.listen(port,host, ()=>{
+app.listen(port,host, ()=>{
   console.log('Express server started at port 3000');
 });
