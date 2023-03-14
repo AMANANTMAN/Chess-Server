@@ -2,7 +2,7 @@
 const express = require('express'),
       server = express();
 
-server.set('port', process.env.PORT || 5001);
+server.set('port', process.env.PORT || 3000);
 
 //Basic routes
 server.get('/',(requests,response)=>{
@@ -24,6 +24,6 @@ server.use((request,response)=>{
 });
 
 //Binding to a port
-server.listen(5001, ()=>{
-  console.log('Express server started at port 5001');
+server.listen(3000, ()=>{
+  console.log('Express server started at port 3000');
 });
