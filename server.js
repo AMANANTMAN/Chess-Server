@@ -1,8 +1,6 @@
 //server.js
-const express = require('express'),
-      server = express();
+const express = require('express'), server = express();
 
-server.set('port', process.env.PORT || 3000);
 
 //Basic routes
 server.get('/',(requests,response)=>{
