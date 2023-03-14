@@ -2,5 +2,16 @@
 <html>
 <body>
 <h1>Index</h1>
+<button id="winter" class="float-left submit-button" >Winter</button>
+<button id="summer" class="float-left submit-button">Summer</button>
+
+<script type="text/javascript">
+  document.getElementById("winter").onclick = function () {
+    location.href = "https://node-js-chess.herokuapp.com/winter";
+  };
+  document.getElementById("summer").onclick = function () {
+    location.href = "https://node-js-chess.herokuapp.com/summer";
+  };
+</script>
 </body>
 </html>
