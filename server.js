@@ -1,17 +1,29 @@
-var http = require('http');
-var url = require('url');
-var fs = require('fs');
+//server.js
+const express = require('express'),
+      server = express();
 
-http.createServer(function(req, res) {
-  var q = url.parse(req.url, true);
-  var filename = "." + q.pathname;
-  fs.readFile(filename, function(err, data) {
-    if (err) {
-      res.writeHead(404, { 'Content-Type': 'text/html' });
-      return res.end("404 Not Found");
-    }
-    res.writeHead(200, { 'Content-Type': 'text/html' });
-    res.write(data);
-    return res.end();
-  });
-}).listen(80);
+server.set('port', process.env.PORT || 80);
+
+//Basic routes
+server.get('/',(requests,response)=>{
+  response.sendFile('index.html')
+});
+server.get('/summer', (request,response)=>{
+   response.sendFile('summer.html');
+});
+
+server.get('/winter',(request,response)=>{
+   response.sendFile('winter.html');
+});
+
+//Express error handling middleware
+server.use((request,response)=>{
+   response.type('text/plain');
+   response.status(505);
+   response.send('Error page');
+});
+
+//Binding to a port
+server.listen(80, ()=>{
+  console.log('Express server started at port 80');
+});
