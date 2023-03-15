@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<header>
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="/static/style.css" />
+</header>
+
+<body>
+  <h1>Index</h1>
+  <form>
+    <div>
+      <label>Username</label>
+      <input type="text" id="user" />
+    </div>
+  </form>
+  <div class="frame">
+    <button class="custom-btn btn-13" id="winter">Winter</button>
+    <button class="custom-btn btn-13">Summer</button>
+  </div>
+
+  <script type="text/javascript">
+    document.querySelector("#winter").addEventListener("click", (e) => {
+      e.preventDefault();
+      const username = document.querySelector('#user').value;
+      fetch('/', {
+        method: 'POST',
+        body: JSON.stringify({
+          username,
+        })
+        .then((res) => {
+          return res.json();
+        })
+      })
+    })
+
+  </script>
+</body>
+
+</html>
