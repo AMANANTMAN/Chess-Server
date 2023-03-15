@@ -3,6 +3,7 @@ const express = require('express'), app = express();
 const host = '0.0.0.0';
 const port = process.env.PORT || 3000;
 let index;
+let array = [];
 
 function dirname(fileName) {
   return __dirname + "/" + fileName
@@ -15,6 +16,7 @@ app.get('/',(req,res)=>{
 
 app.post('/', (req, res) => {
   const { username } = req.body;
+  array.push(username)
   res.send({
     username
   });

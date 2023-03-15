@@ -7,6 +7,7 @@
 
 <body>
   <h1>Index</h1>
+  <p>Username: <span id="text"></span></p>
   <form>
     <div>
       <label>Username</label>
@@ -29,6 +30,9 @@
         })
         .then((res) => {
           return res.json();
+        })
+        .then((data) => {
+          document.getElementById("#text").innerHTML(data)
         })
       })
     })
