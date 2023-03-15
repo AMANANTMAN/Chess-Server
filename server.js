@@ -11,7 +11,7 @@ function dirname(fileName) {
 
 //Basic routes
 app.get('/',(req,res)=>{
-  res.sendFile(dirname("index.html"))
+  res.sendFile(dirname("template/index.html"))
 });
 
 app.post('/', (req, res) => {
@@ -23,11 +23,11 @@ app.post('/', (req, res) => {
 });
 
 app.get('/summer', (req,res)=>{
-   res.sendFile(dirname("summer.html"));
+   res.sendFile(dirname("template/summer.html"));
 });
 
 app.get('/winter',(req,res)=>{
-   res.sendFile(dirname("winter.html"));
+   res.sendFile(dirname("template/winter.html"));
 });
 
 //Express error handling middleware
